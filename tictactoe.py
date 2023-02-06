@@ -7,12 +7,14 @@ class TicTacToe:
         self.window.resizable(0,0)        
         
         self.board = [[0 for row in range(3)] for column in range(3)] 
-        self.buttons = [[tkinter.Button(self.window, disabledforeground="black") for row in range(3)] for column in range(3)]
+        self.buttons = [[tkinter.Button(self.window) for row in range(3)] for column in range(3)]
         
         for row in range(3):
             for column in range(3):
                 self.buttons[row][column].config(height=1, width=2, font=("Helvetica 40 bold"), 
-                                                 command=lambda row=row, column=column: self.play(row, column))
+                                                 disabledforeground="black", command=lambda 
+                                                 row=row, column=column: self.play(row, column))
+                
                 self.buttons[row][column].grid(row=row, column=column)
         
         self.win_conditions = []
